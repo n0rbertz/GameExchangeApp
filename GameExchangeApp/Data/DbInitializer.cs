@@ -32,17 +32,14 @@ namespace GameExchangeApp.Data
                 new Gamer {Name = "John"}
             };
 
-            
-
-            gamers[0].Games.Add(games[0]);
-            gamers[0].Games.Add(games[1]);
-            gamers[1].Games.Add(games[2]);
+            games[0].Gamers.Add(gamers[0]);
+            games[1].Gamers.Add(gamers[0]);
+            games[2].Gamers.Add(gamers[1]);
 
 
-
-            foreach (Gamer g in gamers)
+            foreach(Game game in games)
             {
-                context.Gamers.Add(g);
+                context.Games.Add(game);
             }
             context.SaveChanges();
 

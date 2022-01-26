@@ -28,8 +28,8 @@ namespace GameExchangeApp.Controllers
             return await _context.Games.ToListAsync();
         }
 
-        // GET: api/Games/5
-        [HttpGet("{id}")]
+            // GET: api/Games/5
+            [HttpGet("{id}")]
         public async Task<ActionResult<Game>> GetGame(int id)
         {
             var game = await _context.Games.FindAsync(id);
