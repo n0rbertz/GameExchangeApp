@@ -11,6 +11,7 @@ namespace GameExchangeApp.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Location { get; set; }
         public virtual ICollection<Game> Games { get; set; }
 
         public Gamer()

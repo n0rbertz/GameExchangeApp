@@ -27,9 +27,9 @@ namespace GameExchangeApp.Data
 
             var gamers = new Gamer[]
             {
-                new Gamer {Name = "James"},
-                new Gamer {Name = "Brian"},
-                new Gamer {Name = "John"}
+                new Gamer {Name = "James", Location="Budapest"},
+                new Gamer {Name = "Brian", Location="Vienna"},
+                new Gamer {Name = "John", Location="Budapest"}
             };
 
             games[0].Gamers.Add(gamers[0]);
@@ -42,6 +42,10 @@ namespace GameExchangeApp.Data
                 context.Games.Add(game);
             }
             context.SaveChanges();
+
+            context.Gamers.Add(gamers[2]);
+            context.SaveChanges();
+
 
         }
     }
