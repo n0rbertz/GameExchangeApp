@@ -28,7 +28,7 @@ namespace GameExchangeApp.Controllers
             return await _context.Gamers.ToListAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         [Route("{id}/games")]
         public async Task<ActionResult<IEnumerable<Game>>> GetGamesOfGamer(int id)
         {
