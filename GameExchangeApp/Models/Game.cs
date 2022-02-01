@@ -14,11 +14,14 @@ namespace GameExchangeApp.Models
         public int Id { get; set; }
         public string Title { get; set; }
         [JsonIgnore]
-        public virtual ICollection<Gamer> Gamers { get; set; }
+        public virtual ICollection<Gamer> OwnedBy { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Gamer> DemandedBy { get; set; }
 
         public Game()
         {
-            this.Gamers = new HashSet<Gamer>();
+            this.OwnedBy = new HashSet<Gamer>();
+            this.DemandedBy = new HashSet<Gamer>();
         }
     }
 }
