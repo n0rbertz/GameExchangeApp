@@ -29,11 +29,43 @@ namespace GameExchangeApp.Controllers
         }
 
         [HttpGet]
-        [Route("{id}/games")]
-        public async Task<ActionResult<IEnumerable<Game>>> GetGamesOfGamer(int id)
+        [Route("{id}/gamesowned")]
+        public async Task<ActionResult<IEnumerable<Game>>> GetOwnedGamesOfGamer(int id)
         {
-            var gamer = await _context.Gamers.Include("Games").FirstOrDefaultAsync(g => g.Id.Equals(id));
-            return gamer.Games.ToList();
+            var gamer = await _context.Gamers.Include("GamesOwned").FirstOrDefaultAsync(g => g.Id.Equals(id));
+            return gamer.GamesOwned.ToList();
+        }
+
+        [HttpGet]
+        [Route("{id}/matches")]
+        public async Task<ActionResult<IEnumerable<Gamer>>> GetMatches(int id)
+        {
+            var gamer = await _context.Gamers.Include("GamesOwned").Include("GamesDemanded").FirstOrDefaultAsync(g => g.Id.Equals(id));
+            var gamersWithSameLocation = _context.Gamers.Include("GamesOwned").Include("GamesDemanded").Where(g => g.Location == gamer.Location);
+            var gamesDemanded = gamer.GamesDemanded;
+            var gamersWithDemandedGame = new List<Gamer>();
+            foreach (Game game in gamesDemanded)
+            {
+                foreach(Gamer g in gamersWithSameLocation)
+                {
+                    if (g.GamesOwned.Contains(game))
+                    {
+                        gamersWithDemandedGame.Add(g);
+                    }
+                }
+            }
+            var matches = new List<Gamer>();
+            foreach (Gamer g in gamersWithDemandedGame)
+            {
+                foreach (Game game in g.GamesDemanded)
+                {
+                    if (gamer.GamesOwned.Contains(game))
+                    {
+                            matches.Add(g);
+                    }
+                }
+            }
+            return matches.ToList();
         }
 
         // GET: api/Gamers/5
