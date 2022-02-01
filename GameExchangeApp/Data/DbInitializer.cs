@@ -22,28 +22,36 @@ namespace GameExchangeApp.Data
             {
                 new Game {Title = "Last of Us"},
                 new Game {Title = "Devil May Cry"},
-                new Game {Title = "Fable"}
+                new Game {Title = "Fable"},
+                new Game {Title = "FIFA22"},
+                new Game {Title = "NBA 2K22"}
             };
 
             var gamers = new Gamer[]
             {
                 new Gamer {Name = "James", Location="Budapest"},
-                new Gamer {Name = "Brian", Location="Vienna"},
-                new Gamer {Name = "John", Location="Budapest"}
+                new Gamer {Name = "Brian", Location="Budapest"},
+                new Gamer {Name = "John", Location="Vienna"},
+                new Gamer {Name = "Franklin", Location="London"},
+                new Gamer {Name = "Arnold", Location="London"}
             };
 
-            games[0].Gamers.Add(gamers[0]);
-            games[1].Gamers.Add(gamers[0]);
-            games[2].Gamers.Add(gamers[1]);
+            gamers[0].GamesOwned.Add(games[0]);
+            gamers[0].GamesDemanded.Add(games[1]);
+            gamers[1].GamesOwned.Add(games[1]);
+            gamers[1].GamesDemanded.Add(games[0]);
+            gamers[2].GamesOwned.Add(games[2]);
+            gamers[3].GamesDemanded.Add(games[3]);
+            gamers[4].GamesOwned.Add(games[3]);
+            gamers[4].GamesDemanded.Add(games[4]);
 
-
-            foreach(Game game in games)
+            foreach(Gamer gamer in gamers)
             {
-                context.Games.Add(game);
+                context.Gamers.Add(gamer);
             }
             context.SaveChanges();
 
-            context.Gamers.Add(gamers[2]);
+
             context.SaveChanges();
 
 
