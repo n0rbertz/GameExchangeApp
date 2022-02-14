@@ -12,6 +12,7 @@ namespace GameExchangeApp.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Password { get; set; }
         public string Location { get; set; }
         [InverseProperty("OwnedBy")]
         public virtual ICollection<Game> GamesOwned { get; set; }
