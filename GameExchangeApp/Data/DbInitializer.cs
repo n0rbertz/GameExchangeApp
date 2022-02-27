@@ -20,8 +20,8 @@ namespace GameExchangeApp.Data
 
             var games = new Game[]
             {
-                new Game {Title = "Last of Us"},
-                new Game {Title = "Devil May Cry"},
+                new Game {Title = "Last of Us 2"},
+                new Game {Title = "Devil May Cry 5"},
                 new Game {Title = "Fable"},
                 new Game {Title = "FIFA22"},
                 new Game {Title = "NBA 2K22"}

@@ -116,7 +116,7 @@ namespace GameExchangeApp.Controllers
         // POST: api/Gamers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Gamer>> PostGamer(Gamer gamer)
+        public async Task<ActionResult<Gamer>> PostGamer([FromBody] Gamer gamer)
         {
             _context.Gamers.Add(gamer);
             await _context.SaveChangesAsync();
