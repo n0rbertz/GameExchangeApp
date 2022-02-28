@@ -18,7 +18,6 @@ namespace GameExchangeApp.Models
         public virtual ICollection<Game> GamesOwned { get; set; }
         [InverseProperty("DemandedBy")]
         public virtual ICollection<Game> GamesDemanded { get; set; }
-
         public Gamer()
         {
             this.GamesOwned = new HashSet<Game>();

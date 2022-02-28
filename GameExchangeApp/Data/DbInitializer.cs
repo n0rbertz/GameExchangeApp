@@ -20,8 +20,8 @@ namespace GameExchangeApp.Data
 
             var games = new Game[]
             {
-                new Game {Title = "Last of Us 2"},
-                new Game {Title = "Devil May Cry 5"},
+                new Game {Title = "Last of Us"},
+                new Game {Title = "Devil May Cry"},
                 new Game {Title = "Fable"},
                 new Game {Title = "FIFA22"},
                 new Game {Title = "NBA 2K22"}
@@ -36,6 +36,8 @@ namespace GameExchangeApp.Data
                 new Gamer {Name = "Arnold", Location="London"}
             };
 
+
+
             gamers[0].GamesOwned.Add(games[0]);
             gamers[0].GamesDemanded.Add(games[1]);
             gamers[1].GamesOwned.Add(games[1]);
@@ -45,15 +47,13 @@ namespace GameExchangeApp.Data
             gamers[4].GamesOwned.Add(games[3]);
             gamers[4].GamesDemanded.Add(games[4]);
 
-            foreach(Gamer gamer in gamers)
+
+
+            foreach (Gamer gamer in gamers)
             {
                 context.Gamers.Add(gamer);
             }
             context.SaveChanges();
-
-
-            context.SaveChanges();
-
 
         }
     }
