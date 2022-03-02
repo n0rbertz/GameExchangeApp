@@ -1,0 +1,15 @@
+﻿.header {
+    text-align: center;
+    border-radius: 25px;
+    border: 2px solid blue;
+    padding: 20px;
+}
+
+.userdetail {
+    padding: 20px;
+}
+
+.gamecard {
+    padding: 20px;
+}
+
