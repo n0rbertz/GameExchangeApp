@@ -12,6 +12,8 @@ namespace GameExchangeApp.Models
         [Key]
         public int Id { get; set; }
         public string Title { get; set; }
+        public int ReleaseDate { get; set; }
+        public string Genre { get; set; }
         [JsonIgnore]
         public virtual ICollection<Gamer> OwnedBy { get; set; }
         [JsonIgnore]
