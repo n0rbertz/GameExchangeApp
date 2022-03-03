@@ -20,11 +20,11 @@ namespace GameExchangeApp.Data
 
             var games = new Game[]
             {
-                new Game {Title = "Last of Us"},
-                new Game {Title = "Devil May Cry"},
-                new Game {Title = "Fable"},
-                new Game {Title = "FIFA22"},
-                new Game {Title = "NBA 2K22"}
+                new Game {Title = "Last of Us", ReleaseDate = 2013, Genre = "Action-Adventure"},
+                new Game {Title = "Devil May Cry", ReleaseDate = 2006, Genre = "Hack & Slash"},
+                new Game {Title = "Fable", ReleaseDate = 2004, Genre = "RPG"},
+                new Game {Title = "FIFA22", ReleaseDate = 2021, Genre = "Sports"},
+                new Game {Title = "NBA 2K22", ReleaseDate = 2021, Genre = "Sports"}
             };
 
             var gamers = new Gamer[]
