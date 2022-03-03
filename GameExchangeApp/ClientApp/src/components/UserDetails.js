@@ -2,7 +2,7 @@
 import UserDetail from './UserDetail'
 import Button from './Button'
 import Game from './Game'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const UserDetails = () => {
     const [showGames, setShowGames] = useState(false)
@@ -13,13 +13,22 @@ const UserDetails = () => {
         Name: 'John Doe',
         Location: 'Kansas',
     }
-    const gamesOwned = [
-        {
-            Title: 'Devil May Cry',
-            Release: 2003,
-            Genre: 'Hack and slash'
+    const [gamesOwned, setGamesOwned] = useState([])
+
+    useEffect(() => {
+        const getGames = async () => {
+            const games = await fetchGames()
+            setGamesOwned(games)
         }
-    ]
+        getGames()
+        console.log(gamesOwned)
+    }, [])
+
+    const fetchGames = async () => {
+        const res = await fetch('https://localhost:5001/api/gamers/1/gamesowned')
+        const data = await res.json()
+        return data
+    }
 
     const onClickGamesButton = () => {
         setShowGames(!showGames)
@@ -35,7 +44,7 @@ const UserDetails = () => {
             </div>
             <div className='games'>
                 <Button showGames={ showGames } onClick={onClickGamesButton } />
-                {showGames ? gamesOwned.map((game) => (<Game title={game.Title} release={game.Release} genre={ game.Genre} />)) : ''}
+                {showGames ? gamesOwned.map((game) => (<Game title={game.title} release={game.releaseDate} genre={ game.genre} />)) : ''}
             </div>
         </div>
     )
