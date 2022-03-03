@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GameExchangeApp.Data;
 using GameExchangeApp.Models;
+using GameExchangeApp.DTOs;
 
 namespace GameExchangeApp.Controllers
 {
@@ -70,7 +71,7 @@ namespace GameExchangeApp.Controllers
 
         // GET: api/Gamers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Gamer>> GetGamer(int id)
+        public async Task<ActionResult<GamerDTO>> GetGamer(int id)
         {
             var gamer = await _context.Gamers.FindAsync(id);
 
@@ -79,7 +80,7 @@ namespace GameExchangeApp.Controllers
                 return NotFound();
             }
 
-            return gamer;
+            return new GamerDTO { Name = gamer.Name, Location = gamer.Location };
         }
 
         // PUT: api/Gamers/5
