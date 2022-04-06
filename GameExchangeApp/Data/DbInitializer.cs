@@ -13,7 +13,7 @@ namespace GameExchangeApp.Data
             context.Database.EnsureCreated();
 
             // Look for any students.
-            if (context.Gamers.Any())
+            if (context.Users.Any())
             {
                 return;   // DB has been seeded
             }
@@ -27,13 +27,13 @@ namespace GameExchangeApp.Data
                 new Game {Title = "NBA 2K22", ReleaseDate = 2021, Genre = "Sports"}
             };
 
-            var gamers = new Gamer[]
+            var gamers = new ApplicationUser[]
             {
-                new Gamer {Name = "James", Location="Budapest"},
-                new Gamer {Name = "Brian", Location="Budapest"},
-                new Gamer {Name = "John", Location="Vienna"},
-                new Gamer {Name = "Franklin", Location="London"},
-                new Gamer {Name = "Arnold", Location="London"}
+                new ApplicationUser {UserName = "James", Location="Budapest"},
+                new ApplicationUser {UserName = "Brian", Location="Budapest"},
+                new ApplicationUser {UserName = "John", Location="Vienna"},
+                new ApplicationUser {UserName = "Franklin", Location="London"},
+                new ApplicationUser {UserName = "Arnold", Location="London"}
             };
 
 
@@ -49,9 +49,9 @@ namespace GameExchangeApp.Data
 
 
 
-            foreach (Gamer gamer in gamers)
+            foreach (ApplicationUser user in gamers)
             {
-                context.Gamers.Add(gamer);
+                context.Users.Add(user);
             }
             context.SaveChanges();
 
