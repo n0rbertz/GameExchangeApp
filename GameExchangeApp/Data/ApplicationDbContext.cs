@@ -18,7 +18,5 @@ namespace GameExchangeApp.Data
         {
         }
         public DbSet<Game> Games { get; set; }
-        public DbSet<Gamer> Gamers { get; set; }
-
     }
 }
