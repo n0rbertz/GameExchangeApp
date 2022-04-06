@@ -8,24 +8,30 @@ const UserDetails = () => {
     const [showGames, setShowGames] = useState(false)
 
 
-    const user =
-    {
-        Name: 'John Doe',
-        Location: 'Kansas',
-    }
+    const [user, setUser] = useState({})
     const [gamesOwned, setGamesOwned] = useState([])
 
     useEffect(() => {
+        const getUser = async () => {
+            const user = await fetchUser()
+            setUser(user)
+        }
         const getGames = async () => {
             const games = await fetchGames()
             setGamesOwned(games)
         }
+        getUser()
         getGames()
-        console.log(gamesOwned)
     }, [])
 
     const fetchGames = async () => {
         const res = await fetch('https://localhost:5001/api/gamers/1/gamesowned')
+        const data = await res.json()
+        return data
+    }
+
+    const fetchUser = async () => {
+        const res = await fetch('https://localhost:5001/api/gamers/1')
         const data = await res.json()
         return data
     }
@@ -38,9 +44,8 @@ const UserDetails = () => {
     return (
         <div>
             <div className='userdetails'>
-            {Object.entries(user).map(([key, value]) => {
-                return (<UserDetail detailType={key} detail={value} />)
-            })}
+                <h3>Name: {user.name}</h3>
+                <h3>Location: { user.location}</h3>
             </div>
             <div className='games'>
                 <Button showGames={ showGames } onClick={onClickGamesButton } />
