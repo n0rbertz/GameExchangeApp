@@ -15,7 +15,7 @@ const Matches = () => {
     }, [])
 
     const fetchMatches = async () => {
-        const res = await fetch('https://localhost:5001/api/gamers/1/matches')
+        const res = await fetch('https://localhost:5001/api/gamers/31870695-e79d-4fe3-b139-14a141625175/matches')
         const data = await res.json()
         return data
     }
