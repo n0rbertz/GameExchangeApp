@@ -15,14 +15,14 @@ namespace GameExchangeApp.Models
         public int ReleaseDate { get; set; }
         public string Genre { get; set; }
         [JsonIgnore]
-        public virtual ICollection<Gamer> OwnedBy { get; set; }
+        public virtual ICollection<ApplicationUser> OwnedBy { get; set; }
         [JsonIgnore]
-        public virtual ICollection<Gamer> DemandedBy { get; set; }
+        public virtual ICollection<ApplicationUser> DemandedBy { get; set; }
 
         public Game()
         {
-            this.OwnedBy = new HashSet<Gamer>();
-            this.DemandedBy = new HashSet<Gamer>();
+            this.OwnedBy = new HashSet<ApplicationUser>();
+            this.DemandedBy = new HashSet<ApplicationUser>();
         }
     }
 }
