@@ -1,5 +1,6 @@
 using GameExchangeApp.Data;
 using GameExchangeApp.Models;
+using GameExchangeApp.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -56,6 +57,8 @@ namespace GameExchangeApp
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
