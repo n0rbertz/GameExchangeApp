@@ -25,13 +25,13 @@ const UserDetails = () => {
     }, [])
 
     const fetchGames = async () => {
-        const res = await fetch('https://localhost:5001/api/users/31870695-e79d-4fe3-b139-14a141625175/gamesowned')
+        const res = await fetch('https://localhost:5001/api/user/31870695-e79d-4fe3-b139-14a141625175/gamesowned')
         const data = await res.json()
         return data
     }
 
     const fetchUser = async () => {
-        const res = await fetch('https://localhost:5001/api/users/31870695-e79d-4fe3-b139-14a141625175')
+        const res = await fetch('https://localhost:5001/api/user/31870695-e79d-4fe3-b139-14a141625175')
         const data = await res.json()
         return data
     }
