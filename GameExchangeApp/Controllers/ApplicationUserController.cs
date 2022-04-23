@@ -13,16 +13,16 @@ namespace GameExchangeApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class ApplicationUserController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public UsersController(ApplicationDbContext context)
+        public ApplicationUserController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Gamers
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers()
         {
@@ -69,7 +69,6 @@ namespace GameExchangeApp.Controllers
             return matches.ToList();
         }
 
-        // GET: api/Gamers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GamerDTO>> GetUser(string id)
         {
@@ -83,7 +82,6 @@ namespace GameExchangeApp.Controllers
             return new GamerDTO { Name = user.UserName, Location = user.Location };
         }
 
-        // PUT: api/Gamers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(string id, ApplicationUser user)
@@ -114,7 +112,6 @@ namespace GameExchangeApp.Controllers
             return NoContent();
         }
 
-        // POST: api/Gamers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Gamer>> PostUser([FromBody] ApplicationUser user)
@@ -125,7 +122,6 @@ namespace GameExchangeApp.Controllers
             return CreatedAtAction("GetGamer", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Gamers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id)
         {
