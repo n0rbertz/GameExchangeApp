@@ -10,10 +10,10 @@ namespace GameExchangeApp.Repositories
     public interface IApplicationUserRepository 
     {
         Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers();
-        Task<ActionResult<ApplicationUser>> GetApplicationUserById(string id);
+        Task<ActionResult<ApplicationUser>> GetUserById(string id);
         Task<ActionResult<ApplicationUser>> GetUserWithOwnedAndDemandedGames(string id);
         Task<ActionResult<IEnumerable<Game>>> GetOwnedGamesOfUser(string id);
-        void InsertApplicationUser(ApplicationUser applicationUser);
+        void InsertUser(ApplicationUser applicationUser);
         void Save();
     }
 }
