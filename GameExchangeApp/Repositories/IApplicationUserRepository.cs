@@ -9,8 +9,7 @@ namespace GameExchangeApp.Repositories
 {
     public interface IApplicationUserRepository : IRepository<ApplicationUser>
     {
-        
         Task<ActionResult<ApplicationUser>> GetUserWithOwnedAndDemandedGames(string id);
-        Task<ActionResult<IEnumerable<Game>>> GetOwnedGamesOfUser(string id);       
+        Task<ActionResult<IEnumerable<Game>>> GetOwnedGamesOfUser(string id);        
     }
 }
