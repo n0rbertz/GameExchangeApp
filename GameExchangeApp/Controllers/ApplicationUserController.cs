@@ -26,7 +26,7 @@ namespace GameExchangeApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers()
         {
-            return await userRepository.GetUsers();
+            return await userRepository.GetAll();
         }
 
         [HttpGet]
@@ -39,7 +39,7 @@ namespace GameExchangeApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ApplicationUser>> GetUser(string id)
         {
-            var user = await userRepository.GetUserById(id);
+            var user = await userRepository.GetById(id);
 
             if (user == null)
             {
@@ -53,7 +53,7 @@ namespace GameExchangeApp.Controllers
         [HttpPost]
         public ActionResult<ApplicationUser> PostUser([FromBody] ApplicationUser user)
         {
-            userRepository.InsertUser(user);
+            userRepository.Add(user);
             userRepository.Save();
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
