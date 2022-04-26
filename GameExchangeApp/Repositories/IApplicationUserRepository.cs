@@ -7,13 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GameExchangeApp.Repositories
 {
-    public interface IApplicationUserRepository 
+    public interface IApplicationUserRepository : IRepository<ApplicationUser>
     {
-        Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers();
-        Task<ActionResult<ApplicationUser>> GetUserById(string id);
+        
         Task<ActionResult<ApplicationUser>> GetUserWithOwnedAndDemandedGames(string id);
-        Task<ActionResult<IEnumerable<Game>>> GetOwnedGamesOfUser(string id);
-        void InsertUser(ApplicationUser applicationUser);
-        void Save();
+        Task<ActionResult<IEnumerable<Game>>> GetOwnedGamesOfUser(string id);       
     }
 }
