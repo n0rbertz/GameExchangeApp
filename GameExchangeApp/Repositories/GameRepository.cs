@@ -10,6 +10,12 @@ namespace GameExchangeApp.Repositories
     public class GameRepository : IGameRepository
     {
         private readonly ApplicationDbContext context;
+
+        public GameRepository(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
+
         public async Task<ActionResult<Game>> GetGameById(int id)
         {
             return await context.Games.FindAsync(id);
