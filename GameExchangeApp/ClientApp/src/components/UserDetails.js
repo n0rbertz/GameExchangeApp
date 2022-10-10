@@ -44,7 +44,7 @@ const UserDetails = () => {
     return (
         <div>
             <div className='userdetails'>
-                <h3>Name: {user.name}</h3>
+                <h3>Name: {user.userName}</h3>
                 <h3>Location: { user.location}</h3>
             </div>
             <div className='games'>
