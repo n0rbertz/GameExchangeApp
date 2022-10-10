@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GameExchangeApp.DTOs
 {
-    public class GamerDTO
+    public class UserDTO
     {     
         public string Name { get; set; }
         public string Location { get; set; }
