@@ -14,6 +14,7 @@ namespace GameExchangeApp.Repositories
         Task<ActionResult<ApplicationUser>> GetUserWithOwnedAndDemandedGames(string id);
         Task<ActionResult<IEnumerable<Game>>> GetOwnedGamesOfUser(string id);
         void InsertUser(ApplicationUser applicationUser);
+        void AddGame(ApplicationUser user, Game game);
         void Save();
     }
 }
