@@ -11,6 +11,7 @@ namespace GameExchangeApp.Repositories
 
         Task<ActionResult<IEnumerable<Game>>> GetGames();
         Task<ActionResult<Game>> GetGameById(int id);
-
+        void AddUserToGame(ApplicationUser user, Game game);
+        void Save();
     }
 }
