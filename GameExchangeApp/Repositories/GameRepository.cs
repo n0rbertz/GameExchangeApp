@@ -16,6 +16,11 @@ namespace GameExchangeApp.Repositories
             this.context = context;
         }
 
+        public void AddUserToGame(ApplicationUser user, Game game)
+        {
+            game.OwnedBy.Add(user);
+        }
+
         public async Task<ActionResult<Game>> GetGameById(int id)
         {
             return await context.Games.FindAsync(id);
@@ -24,6 +29,11 @@ namespace GameExchangeApp.Repositories
         public async Task<ActionResult<IEnumerable<Game>>> GetGames()
         {
             return await context.Games.ToListAsync();
+        }
+
+        public void Save()
+        {
+            context.SaveChangesAsync();
         }
     }
 }
