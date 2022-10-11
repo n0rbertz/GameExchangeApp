@@ -36,7 +36,7 @@ namespace GameExchangeApp.Repositories
 
         public async Task<ActionResult<ApplicationUser>> GetUserWithOwnedAndDemandedGames(string id)
         {
-            return await  context.Users.Include("GamesOwned").Include("GamesDemanded").FirstOrDefaultAsync(u => u.Id.Equals(id));
+            return await context.Users.Include("GamesOwned").Include("GamesDemanded").FirstOrDefaultAsync(u => u.Id.Equals(id));
         }
 
         public void Save()

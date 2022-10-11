@@ -56,15 +56,9 @@ namespace GameExchangeApp.Controllers
         public async Task<ActionResult<ApplicationUser>> AddGame(string userId, [FromBody] int gameId)
         {
             var game = await gameRepository.GetGameById(gameId);
-
-            if (game == null)
-            {
-                return NotFound();
-            }
-
             var user = await userRepository.GetUserById(userId);
 
-            if (user == null)
+            if (game == null || user == null)
             {
                 return NotFound();
             }
@@ -75,8 +69,7 @@ namespace GameExchangeApp.Controllers
             userRepository.Save();
             gameRepository.Save();
 
-            return CreatedAtAction(userId, game.Value);
-            
+            return CreatedAtAction(userId, game.Value);          
         }
 
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
