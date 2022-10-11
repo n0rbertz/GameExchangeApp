@@ -17,10 +17,12 @@ namespace GameExchangeApp.Controllers
     public class UserController : ControllerBase
     {
         private readonly IApplicationUserRepository userRepository;
+        private readonly IGameRepository gameRepository;
 
-        public UserController(IApplicationUserRepository userRepository)
+        public UserController(IApplicationUserRepository userRepository, IGameRepository gameRepository)
         {
             this.userRepository = userRepository;
+            this.gameRepository = gameRepository;
         }
 
         [HttpGet]
@@ -47,6 +49,27 @@ namespace GameExchangeApp.Controllers
             }
 
             return user;
+        }
+
+        [HttpPost]
+        [Route("{userId}/addgame")]
+        public async Task<ActionResult<ApplicationUser>> AddGame(string userId, [FromBody] int gameId)
+        {
+            var game = await gameRepository.GetGameById(gameId);
+            var user = await userRepository.GetUserById(userId);
+
+            if (game == null || user == null)
+            {
+                return NotFound();
+            }
+
+            userRepository.AddGame(user.Value, game.Value);
+            gameRepository.AddUserToGame(user.Value, game.Value);
+
+            userRepository.Save();
+            gameRepository.Save();
+
+            return CreatedAtAction(userId, game.Value);          
         }
 
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

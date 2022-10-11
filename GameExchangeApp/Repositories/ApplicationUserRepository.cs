@@ -36,7 +36,7 @@ namespace GameExchangeApp.Repositories
 
         public async Task<ActionResult<ApplicationUser>> GetUserWithOwnedAndDemandedGames(string id)
         {
-            return await  context.Users.Include("GamesOwned").Include("GamesDemanded").FirstOrDefaultAsync(u => u.Id.Equals(id));
+            return await context.Users.Include("GamesOwned").Include("GamesDemanded").FirstOrDefaultAsync(u => u.Id.Equals(id));
         }
 
         public void Save()
@@ -44,12 +44,15 @@ namespace GameExchangeApp.Repositories
             context.SaveChangesAsync();
         }
 
-        
-
         public async Task<ActionResult<IEnumerable<Game>>> GetOwnedGamesOfUser(string id)
         {
             var user = await context.Users.Include("GamesOwned").FirstOrDefaultAsync(u => u.Id.Equals(id));
             return user.GamesOwned.ToList();
+        }
+
+        public void AddGame(ApplicationUser user, Game game)
+        {
+            user.GamesOwned.Add(game);
         }
     }
 }
