@@ -25,13 +25,13 @@ const UserDetails = () => {
     }, [])
 
     const fetchGames = async () => {
-        const res = await fetch('https://localhost:5001/api/user/31870695-e79d-4fe3-b139-14a141625175/gamesowned')
+        const res = await fetch('https://localhost:5001/api/user/a18d497c-76d1-4007-a8d3-5754c1c7bee9/gamesowned')
         const data = await res.json()
         return data
     }
 
     const fetchUser = async () => {
-        const res = await fetch('https://localhost:5001/api/user/31870695-e79d-4fe3-b139-14a141625175')
+        const res = await fetch('https://localhost:5001/api/user/a18d497c-76d1-4007-a8d3-5754c1c7bee9')
         const data = await res.json()
         return data
     }
@@ -48,7 +48,7 @@ const UserDetails = () => {
                 <h3>Location: { user.location}</h3>
             </div>
             <div className='games'>
-                <Button showGames={ showGames } onClick={onClickGamesButton } />
+                <Button title={showGames ? 'Hide my games' : 'Show my games'} color={showGames ? { backgroundColor: 'red' } : { backgroundColor: 'green' } } onClick={onClickGamesButton } />
                 {showGames ? gamesOwned.map((game) => (<Game title={game.title} release={game.releaseDate} genre={ game.genre} />)) : ''}
             </div>
         </div>
