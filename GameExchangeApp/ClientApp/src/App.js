@@ -6,6 +6,7 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import ProfilePage from './components/ProfilePage';
 import Matches from './components/Matches';
+import MyGames from './components/MyGames';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
@@ -22,6 +23,7 @@ export default class App extends Component {
         <Route path='/counter' component={Counter} />
         <Route path='/myprofile' component={ProfilePage} />
         <Route path='/matches' component={Matches} />
+        <Route path='/my-games' component={MyGames} />
         <AuthorizeRoute path='/fetch-data' component={FetchData} />
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
       </Layout>
