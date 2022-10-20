@@ -14,6 +14,7 @@ namespace GameExchangeApp.Models
         public string Title { get; set; }
         public int ReleaseDate { get; set; }
         public string Genre { get; set; }
+        public string Image { get; set; }
         [JsonIgnore]
         public virtual ICollection<ApplicationUser> OwnedBy { get; set; }
         [JsonIgnore]
