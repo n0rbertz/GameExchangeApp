@@ -14,12 +14,12 @@ namespace GameExchangeApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class ApplicationUserController : ControllerBase
     {
         private readonly IApplicationUserRepository userRepository;
         private readonly IGameRepository gameRepository;
 
-        public UserController(IApplicationUserRepository userRepository, IGameRepository gameRepository)
+        public ApplicationUserController(IApplicationUserRepository userRepository, IGameRepository gameRepository)
         {
             this.userRepository = userRepository;
             this.gameRepository = gameRepository;
